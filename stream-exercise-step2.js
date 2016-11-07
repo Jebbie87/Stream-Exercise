@@ -1,4 +1,3 @@
-'use strict';
 
 var https = require('https')
 
@@ -17,15 +16,22 @@ function getAndPrintHTML () {
 
     response.on('data', function(data){
 
-      var dataChunk = [];
-      dataChunk.push("This is the buffered data: ", data)
+      //
 
-      dataChunk.forEach(function(data){
+      var dataChunk = [];
+      let dataChunk2 = [];
+      const dataChunk3 = [];
+      // dataChunk.push("This is the var buffered data: ", data)
+      // dataChunk2.push("This is the let buffered data: ", data)
+      dataChunk3.push("This is the const buffered data: ", data)
+
+      dataChunk3.forEach(function(data){
         console.log(data)
       })
-
     })
+
   })
+
 }
 
 console.log(getAndPrintHTML())
