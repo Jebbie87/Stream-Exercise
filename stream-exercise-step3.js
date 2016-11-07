@@ -18,11 +18,8 @@ function getAndPrintHTML (options) {
 
       dataChunk3.push("This is the const buffered data: ", data)
 
-      dataChunk3.forEach(function(data){
-        console.log(data)
-      })
-
       response.on('end', function(){
+        console.log("This is the buffered data: " + data)
         console.log("Response stream complete.")
       })
     })
