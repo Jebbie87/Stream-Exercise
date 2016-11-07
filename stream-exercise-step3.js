@@ -21,6 +21,10 @@ function getAndPrintHTML (options) {
       dataChunk3.forEach(function(data){
         console.log(data)
       })
+
+      response.on('end', function(){
+        console.log("Response stream complete.")
+      })
     })
   })
 }
