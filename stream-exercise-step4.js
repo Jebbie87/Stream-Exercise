@@ -1,20 +1,21 @@
+'use strict';
 var https = require('https')
 
+
 function getHTML (options, callback) {
-  /* Add your code here */
   https.get(options, function(response){
 
     response.setEncoding('utf-8')
 
+    let dataChunk3 = "";
+
     response.on('data', function(data){
+      dataChunk3 += data
+    })
 
-      const dataChunk3 = [];
-      dataChunk3.push("This is the const buffered data: ", data)
-
-      response.on('end', function(){
-        printHTML(data)
-        console.log("Response stream complete.")
-      })
+    response.on('end', function(){
+      callback(dataChunk3)
+      console.log("Response stream complete.")
     })
   })
 }
@@ -27,9 +28,5 @@ var requestOptions = {
   host: 'sytantris.github.io',
   path: '/http-examples/step4.html'
 };
+
 getHTML(requestOptions, printHTML)
-
-
-
-
-
